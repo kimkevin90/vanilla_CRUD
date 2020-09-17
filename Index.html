@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>도서관 시스템</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    h1 {
+      color: white;
+      text-align: center;
+    }
+
+    #contentLabel {
+      margin-top: 5px;
+      width: 450px;
+      display: block;
+    }
+
+    input {
+      width: 200px;
+    }
+
+    input:focus {
+      background-color: #f2f2f2;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      background: gainsboro;
+    }
+
+    th,
+    td {
+      text-align: center;
+      border: 2px solid black;
+      height: 60px;
+
+    }
+
+    .container1 {
+      margin: 0 auto;
+
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      background-color: #FFF;
+      border: 1px solid #CCC;
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+
+    .container2 {
+      width: 100%;
+      max-width: 1200px;
+      background-color: #FFF;
+      border: 2px solid black;
+      margin-top: 25px;
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60px;
+      background-color: paleturquoise;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+
+    button {
+      cursor: pointer;
+      margin: 2px;
+      font-size: 14px;
+      padding: 1px;
+      border-radius: 3px;
+      background: grey;
+      color: aliceblue;
+
+      width: 100px;
+    }
+
+    table tr:hover {
+      background-color: powderblue;
+    }
+
+    tr:nth-child(2n) {
+      background-color: #f2f2f2
+    }
+
+    #submit {
+      justify-items: center;
+      align-items: center;
+    }
+
+    .pagenumbers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pagenumbers button {
+      width: 50px;
+      height: 50px;
+
+      appearance: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+
+      background-color: #44AAEE;
+
+      margin: 5px;
+      transition: 0.4s;
+
+      color: #FFF;
+      font-size: 18px;
+      text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .pagenumbers button:hover {
+      background-color: #44EEAA;
+    }
+
+    .pagenumbers button.active {
+      background-color: #44EEAA;
+      box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="headerbar top">
+    <h1>도서관 시스템</h1>
+  </header>
+  <main>
+    <div class="container1">
+      <form onsubmit="searchTable() ; return false;" required>
+        <input type='text' id="myInput" placeholder="제목,내용,저자로 검색" required />
+        <input type='date' id=firstDate required />
+        <input type='date' id=lastDate required />
+        <input type='submit' value="검색" />
+      </form>
+    </div>
+    <div class="container">
+      <table id="regtable">
+        <thead>
+          <tr>
+            <th>순번</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>저자</th>
+            <th>날짜</th>
+            <th>수정/삭제</th>
+          </tr>
+        </thead>
+        <tbody id="tablerows">
+        </tbody>
+      </table>
+    </div>
+    <div class="pagenumbers" id="pagination"></div>
+    <!--
+  <div id="pagination" class="pagination">
+    <p class="pagination-label">
+      Viewing <span>1-5</span> of <span>36</span>
+    </p>
+    <a href="#" class="previous round">&#8249;</a>
+    <a href="#" class="next round">&#8250;</a>
+  </div>
+  -->
+    <div class='container2'>
+      <form required>
+        <label for="firstname"><span>책제목</span></label>
+        <input type="text" id="firstname" required>
+        <label for="rollnum">저자</label>
+        <input type="text" id="rollnum" required>
+        <label for="subject">날짜</label>
+        <input type="date" id="subject" required>
+        <label for="lastname" id="contentLabel">내용</label>
+        <textarea id="lastname" cols="120" rows="5" placeholder="내용을 입력하세요"></textarea>
+        <label for="submit"></label>
+        <button id="submit" onclick="onRegisterPressed(); return false;" required>Register</button>
+      </form>
+    </div>
+  </main>
+  <script src="./index.js"></script>
+  <!--
+  <script type="text/javascript">
+    var pagination = new Pagination({ id: 'pagination', tableID: 'regtable', noOfRows: 5 });
+  </script>
+  -->
+</body>
+
+</html>
