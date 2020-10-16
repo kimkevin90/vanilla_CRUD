@@ -55,7 +55,6 @@ function search(input, startDate, LastDate) {
     let ex = new Date(td[4].innerHTML).getTime();
     for (let j = 1; j < td.length; j++) {
       cell = td[j];
-      //대표님 여기서 || 연산자로 아래코드를 줄일수 있는 방법이있나요?
       if (
         cell.innerHTML.toUpperCase().indexOf(input.toUpperCase()) > -1 &&
         !startDate &&
