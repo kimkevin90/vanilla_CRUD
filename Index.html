@@ -113,55 +113,21 @@
       justify-items: center;
       align-items: center;
     }
-
-    .pagenumbers {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .pagenumbers button {
-      width: 50px;
-      height: 50px;
-
-      appearance: none;
-      border: none;
-      outline: none;
-      cursor: pointer;
-
-      background-color: #44AAEE;
-
-      margin: 5px;
-      transition: 0.4s;
-
-      color: #FFF;
-      font-size: 18px;
-      text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
-      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    .pagenumbers button:hover {
-      background-color: #44EEAA;
-    }
-
-    .pagenumbers button.active {
-      background-color: #44EEAA;
-      box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
-    }
   </style>
 </head>
 
-<body>
+<body onload="init()">
   <header class="headerbar top">
     <h1>도서관 시스템</h1>
   </header>
   <main>
     <div class="container1">
-      <form onsubmit="searchTable() ; return false;" required>
-        <input type='text' id="myInput" placeholder="제목,내용,저자로 검색" required />
-        <input type='date' id=firstDate required />
-        <input type='date' id=lastDate required />
+      <form
+        onsubmit="search(document.getElementById('myInput').value, document.getElementById('firstDate').value, document.getElementById('lastDate').value) ; return false;"
+        required>
+        <input type='text' id="myInput" placeholder="제목,내용,저자로 검색" />
+        <input type='date' id=firstDate />
+        <input type='date' id=lastDate />
         <input type='submit' value="검색" />
       </form>
     </div>
@@ -182,17 +148,8 @@
       </table>
     </div>
     <div class="pagenumbers" id="pagination"></div>
-    <!--
-  <div id="pagination" class="pagination">
-    <p class="pagination-label">
-      Viewing <span>1-5</span> of <span>36</span>
-    </p>
-    <a href="#" class="previous round">&#8249;</a>
-    <a href="#" class="next round">&#8250;</a>
-  </div>
-  -->
     <div class='container2'>
-      <form required>
+      <form id='form_on' required>
         <label for="firstname"><span>책제목</span></label>
         <input type="text" id="firstname" required>
         <label for="rollnum">저자</label>
@@ -202,16 +159,13 @@
         <label for="lastname" id="contentLabel">내용</label>
         <textarea id="lastname" cols="120" rows="5" placeholder="내용을 입력하세요"></textarea>
         <label for="submit"></label>
-        <button id="submit" onclick="onRegisterPressed(); return false;" required>Register</button>
+        <button id="submit"
+          onclick="register(document.getElementById('firstname').value, document.getElementById('lastname').value,document.getElementById('rollnum').value,document.getElementById('subject').value); return false;"
+          required>Register</button>
       </form>
     </div>
   </main>
   <script src="./index.js"></script>
-  <!--
-  <script type="text/javascript">
-    var pagination = new Pagination({ id: 'pagination', tableID: 'regtable', noOfRows: 5 });
-  </script>
-  -->
 </body>
 
 </html>
