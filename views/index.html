@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <title>도서관 시스템</title>
+  </head>
+  <body onload="init()">
+    <header class="headerbar top">
+      <h1>도서관 시스템</h1>
+    </header>
+    <main>
+      <div class="container1">
+        <form id="search-form">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="제목,내용,저자로 검색"
+          />
+          <input type="date" id="firstDate" />
+          <input type="date" id="lastDate" />
+          <input type="submit" value="검색" />
+        </form>
+      </div>
+      <div class="container">
+        <table id="table">
+          <thead>
+            <th>ID</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>저자</th>
+            <th>날짜</th>
+            <th>Delete</th>
+            <th>Edit</th>
+          </thead>
+          <tbody id="tablerows"></tbody>
+        </table>
+      </div>
+      <div class="container2">
+        <form id="form_on" required>
+          <label>책삽입</label>
+          <input type="text" id="name-input" placeholder="책제목" />
+          <input type="text" id="contents-input" placeholder="내용" />
+          <input type="text" id="writer-input" placeholder="저자" />
+          <input type="date" id="date-input" placeholder="날짜" />
+          <button onclick="register()" id="add-name-btn">Add</button>
+        </form>
+      </div>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
